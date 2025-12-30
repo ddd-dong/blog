@@ -2,3 +2,28 @@ baseURL: https://example.org/
 languageCode: en-us
 title: My New Hugo Site
 theme: ["PaperMod"]
+params:
+  profileMode:
+    enabled: true
+    title: "Ddd" # optional default will be site title
+    subtitle: "Ddd's Blog"
+    imageUrl: "<image link>" # optional
+    imageTitle: "<title of image as alt>" # optional
+    imageWidth: 120 # custom size
+    imageHeight: 120 # custom size
+    buttons:
+      - name: Archive
+        url: "/archive"
+      
+
+  socialIcons: # optional
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/yu-ting-lin-870238267/"
+    - name: Github
+      url: "https://github.com/ddd-dong"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
