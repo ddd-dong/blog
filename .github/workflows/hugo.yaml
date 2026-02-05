@@ -1,0 +1,42 @@
+baseURL: https://ddd-blog.netlify.app/
+languageCode: en-us
+title: My New Hugo Site
+theme: ["PaperMod"]
+params:
+  ShowReadingTime: true
+  ShowBreadCrumbs: true
+  profileMode:
+    enabled: true
+    title: "Ddd" # optional default will be site title
+    subtitle: "Ddd's Blog"
+    imageUrl: "<image link>" # optional
+    imageTitle: "<title of image as alt>" # optional
+    imageWidth: 120 # custom size
+    imageHeight: 120 # custom size
+    buttons:
+      - name: Archive
+        url: "/archives/"
+      - name: Github
+        url: "https://github.com/ddd-dong"
+
+  socialIcons: # optional
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/yu-ting-lin-870238267/"
+
+menu:
+  main:
+    - name: Home
+      url: "/"
+      weight: 1
+    - name: Archive
+      url: "/archives/"
+      weight: 2
+    - name: Search
+      url: "/search/"
+      weight: 3
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
