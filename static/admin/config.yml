@@ -2,6 +2,8 @@ backend:
   name: github
   repo: ddd-dong/blog
   branch: main
+  base_url: https://blog-auth.dong1214-mailbox.workers.dev
+  auth_endpoint: auth
 media_folder: static/img
 public_folder: /img
 collections:
