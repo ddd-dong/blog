@@ -65,19 +65,13 @@
   /* ---------- top bar ---------- */
   header{
     position:sticky;top:0;z-index:20;
-    display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:24px;
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;
     height:56px;padding:0 24px;
     background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);
   }
   .brand{font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
   .brand .sq{width:14px;height:14px;background:var(--fg);transform:rotate(45deg) scale(.7)}
-  header>nav{display:flex;gap:4px}
-  header>nav a{
-    font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.14em;
-    padding:6px 14px;border-left:1px solid var(--line);color:var(--fg-dim)
-  }
-  header>nav a:hover,header>nav a:focus-visible{color:var(--fg);background:var(--bg2);outline:none}
   .clock{font-family:var(--disp);font-size:14px;letter-spacing:.12em;color:var(--fg-dim);text-align:right;line-height:1.15}
   .clock b{display:block;color:var(--fg);font-size:18px;font-variant-numeric:tabular-nums}
   .tgl{
@@ -187,7 +181,6 @@
     section.stage{padding:28px 20px 48px}
     .hero,.grid{grid-template-columns:1fr}
     .card.wide,.card.full{grid-column:auto}
-    header>nav{display:none}
   }
 
   /* ================================================================
