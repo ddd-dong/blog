@@ -72,12 +72,12 @@
   }
   .brand{font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
   .brand .sq{width:14px;height:14px;background:var(--fg);transform:rotate(45deg) scale(.7)}
-  nav{display:flex;gap:4px}
-  nav a{
+  header>nav{display:flex;gap:4px}
+  header>nav a{
     font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.14em;
     padding:6px 14px;border-left:1px solid var(--line);color:var(--fg-dim)
   }
-  nav a:hover,nav a:focus-visible{color:var(--fg);background:var(--bg2);outline:none}
+  header>nav a:hover,header>nav a:focus-visible{color:var(--fg);background:var(--bg2);outline:none}
   .clock{font-family:var(--disp);font-size:14px;letter-spacing:.12em;color:var(--fg-dim);text-align:right;line-height:1.15}
   .clock b{display:block;color:var(--fg);font-size:18px;font-variant-numeric:tabular-nums}
   .tgl{
@@ -162,15 +162,22 @@
 
   /* ---------- responsive ---------- */
   @media (max-width:900px){
-    main{grid-template-columns:1fr}
-    aside{position:static;height:auto;flex-direction:row;flex-wrap:wrap;padding:12px;border-right:0;border-bottom:1px solid var(--line)}
+    header{gap:12px;padding:0 14px}
+    .brand{font-size:18px;gap:8px}
+    .brand .sq{width:11px;height:11px}
+    .clock{font-size:11px;letter-spacing:.08em}
+    .clock b{font-size:15px}
+    .tgl{padding:6px 9px;font-size:12px;letter-spacing:.1em}
+    /* auto rows would otherwise share main's min-height and stretch the chip bar */
+    main{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+    aside{position:static;height:auto;align-items:center;flex-direction:row;flex-wrap:wrap;padding:12px;border-right:0;border-bottom:1px solid var(--line)}
     aside .lbl,aside .foot{display:none}
     aside a{padding:8px 12px;font-size:16px;grid-template-columns:auto}
     aside a i,aside a small{display:none}
     section.stage{padding:28px 20px 48px}
     .hero,.grid{grid-template-columns:1fr}
     .card.wide{grid-column:auto}
-    nav{display:none}
+    header>nav{display:none}
   }
 
   /* ================================================================
@@ -238,8 +245,8 @@
 
   /* ---------- pager ---------- */
   .pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
-  .pager a,.pager span{padding:16px 18px;display:block;min-height:78px}
-  .pager span{opacity:.55}
+  .pager>a,.pager>span{padding:16px 18px;display:block;min-height:78px}
+  .pager>span{opacity:.55}
   .pager .k{
     font-family:var(--disp);font-size:12px;letter-spacing:.2em;color:var(--fg-dim);
     display:block;margin-bottom:6px
@@ -329,6 +336,25 @@
   }
   .prose tbody td{border-bottom:1px dashed var(--line);padding:8px 12px;vertical-align:top}
   .prose .highlight{margin-top:1.15em}
+
+  /* chroma tokens — monochrome plus the single accent, no new colours */
+  .prose .highlight{background:var(--bg)}
+  .prose .chroma{background:none;color:var(--fg)}
+  .prose .chroma .c,.prose .chroma .ch,.prose .chroma .cm,.prose .chroma .c1,
+  .prose .chroma .cs,.prose .chroma .cp,.prose .chroma .cpf{color:var(--fg-dim);font-style:italic}
+  .prose .chroma .k,.prose .chroma .kc,.prose .chroma .kd,.prose .chroma .kn,
+  .prose .chroma .kp,.prose .chroma .kr,.prose .chroma .kt,.prose .chroma .o,
+  .prose .chroma .ow{color:var(--accent)}
+  .prose .chroma .s,.prose .chroma .sa,.prose .chroma .sb,.prose .chroma .sc,
+  .prose .chroma .dl,.prose .chroma .sd,.prose .chroma .s2,.prose .chroma .se,
+  .prose .chroma .sh,.prose .chroma .si,.prose .chroma .sx,.prose .chroma .sr,
+  .prose .chroma .s1,.prose .chroma .ss,.prose .chroma .m,.prose .chroma .mb,
+  .prose .chroma .mf,.prose .chroma .mh,.prose .chroma .mi,.prose .chroma .il,
+  .prose .chroma .mo{color:var(--line-strong)}
+  .prose .chroma .nf,.prose .chroma .fm,.prose .chroma .nc,.prose .chroma .nb{color:var(--fg)}
+  .prose .chroma .err{color:var(--accent);background:none}
+  .prose .chroma .ln,.prose .chroma .lnt{color:var(--line);margin-right:14px}
+  .prose .chroma .hl{background:var(--bg2)}
 
   /* ---------- terms ---------- */
   .termlist{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}

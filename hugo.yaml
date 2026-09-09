@@ -2,6 +2,12 @@ baseURL: https://ddd-dong.github.io/blog/
 languageCode: en-us
 timeZone: Asia/Taipei
 hasCJKLanguage: true
+
+markup:
+  highlight:
+    noClasses: false
+    codeFences: true
+    lineNumbersInTable: false
 title: My New Hugo Site
 theme: ["PaperMod"]
 params:
