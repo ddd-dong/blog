@@ -133,6 +133,14 @@
   .row b{font-weight:500;color:var(--fg)}
   .row span{color:var(--fg-dim);font-variant-numeric:tabular-nums}
   .bar{height:3px;background:var(--line);margin-top:6px;grid-column:1/-1}
+
+  /* recent publications panel (same chrome as .status) */
+  .pubs .row{align-items:baseline;padding:11px 0}
+  .pubs .row b{line-height:1.35}
+  .pubs a.row:hover b,.pubs a.row:focus-visible b{color:var(--accent)}
+  .pubs .row small{
+    grid-column:1/-1;margin-top:5px;font-family:var(--mono);font-size:11px;color:var(--fg-dim)
+  }
   .bar i{display:block;height:100%;background:var(--accent);width:var(--w,50%)}
 
   /* ---------- grid of panels ---------- */

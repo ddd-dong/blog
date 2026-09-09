@@ -20,10 +20,14 @@
     </div>
   </div>
 
-  <div class="cut status">
-    <h2>STATUS <em>ONLINE</em></h2>
-    <div class="row"><b>Skill supply-chain attacks</b><span>paper</span><div class="bar"><i style="--w:80%"></i></div></div>
-    <div class="row"><b>Guardrail false-positive DoS</b><span>corpus</span><div class="bar"><i style="--w:45%"></i></div></div>
+  <div class="cut status pubs">
+    <h2>RECENT <em>PUBLICATIONS</em></h2>
+    {{- range first 4 site.Data.publications }}
+    <a class="row" href="{{ .url }}"{{ if hasPrefix .url "http" }} rel="noopener"{{ end }}>
+      <b>{{ .title }}</b><span>{{ .date }}</span>
+      <small>{{ .venue }}{{ with .authors }} · {{ . }}{{ end }}</small>
+    </a>
+    {{- end }}
   </div>
 </div>
 
