@@ -1,6 +1,6 @@
 {{- $ctx := partial "t-ctx.html" . -}}
 <header>
-  <a class="brand" href="{{ "/" | relURL }}"><span class="sq" aria-hidden="true"></span>DDD / TERMINAL</a>
+  <a class="brand" href="{{ site.Home.RelPermalink }}"><span class="sq" aria-hidden="true"></span>DDD / TERMINAL</a>
   <nav aria-label="主導覽">
     <a href="{{ "tags/research/" | relURL }}"{{ if eq $ctx.active "RESEARCH" }} aria-current="page"{{ end }}>RESEARCH</a>
     <a href="{{ "posts/" | relURL }}"{{ if eq $ctx.active "WRITING" }} aria-current="page"{{ end }}>WRITING</a>

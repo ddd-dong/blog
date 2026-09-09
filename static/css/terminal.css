@@ -257,6 +257,7 @@
 
   /* ---------- article ---------- */
   .doc{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:40px;align-items:start}
+  .doc.solo{grid-template-columns:minmax(0,1fr)}
   .doc-head{margin-bottom:20px}
   .doc-head h1{
     font-family:var(--disp);font-weight:800;font-size:clamp(36px,5.2vw,64px);line-height:.98;
@@ -297,15 +298,25 @@
   .prose li::marker{color:var(--line-strong)}
   .prose hr{border:0;border-top:1px dashed var(--line);margin:2.4em 0}
   .prose strong{font-weight:600}
-  .prose blockquote{padding:16px 20px;border-left:3px solid var(--accent);color:var(--fg-dim)}
+  .prose blockquote{
+    position:relative;background:var(--panel);padding:16px 20px;
+    border-left:3px solid var(--accent);color:var(--fg-dim);
+    clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut))
+  }
   .prose blockquote>*+*{margin-top:.8em}
   .prose code{
     font-family:var(--mono);font-size:.88em;background:var(--bg2);
     padding:2px 5px;border:1px solid var(--line)
   }
-  .prose pre{background:var(--bg);padding:18px 20px;overflow-x:auto}
+  .prose pre{
+    background:var(--bg);border:1px solid var(--line);padding:18px 20px;overflow-x:auto;
+    clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut))
+  }
   .prose pre code{font-size:13px;background:none;border:0;padding:0;line-height:1.6}
-  .prose img{display:block;width:100%;height:auto}
+  .prose img{
+    display:block;width:100%;height:auto;
+    clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut))
+  }
   .prose figure{margin-top:1.6em}
   .prose figcaption{
     font-family:var(--disp);font-size:12px;letter-spacing:.14em;text-transform:uppercase;

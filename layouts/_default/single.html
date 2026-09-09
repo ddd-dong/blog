@@ -1,0 +1,55 @@
+{{ define "main" }}
+{{- /* TOC only when the page allows it and there are at least three headings */ -}}
+{{- $hcount := len (findRE "<h[23][ >]" .Content) -}}
+{{- $toc := ge $hcount 3 -}}
+{{- if eq .Params.toc false }}{{ $toc = false }}{{ end -}}
+{{- if eq (.Param "ShowToc") false }}{{ $toc = false }}{{ end -}}
+
+{{- if ne (.Param "ShowBreadCrumbs") false }}
+<div class="crumb">
+  <a href="{{ site.Home.RelPermalink }}">HOME</a> /
+  {{- with .CurrentSection }}{{ if not .IsHome }} <a href="{{ .RelPermalink }}">{{ .Title | upper }}</a> / {{ end }}{{ end }}
+  <span>{{ .Title | upper }}</span>
+</div>
+{{- end }}
+
+<div class="doc-head">
+  <h1>{{ .Title }}</h1>
+  <div class="meta">
+    {{- with .Date }}<span>{{ .Format "2006-01-02" }}</span>{{ end }}
+    {{- if ne (.Param "ShowReadingTime") false }}<i>/</i><span>{{ .ReadingTime }} MIN</span>{{ end }}
+    <i>/</i><span>{{ .WordCount }} 字</span>
+  </div>
+  {{- with .Params.tags }}
+  <div class="tags">{{ range . }}<span>{{ . }}</span>{{ end }}</div>
+  {{- end }}
+</div>
+
+<div class="hazard" style="margin-bottom:28px" aria-hidden="true"></div>
+
+<div class="doc{{ if not $toc }} solo{{ end }}">
+  <article class="prose">
+    {{ .Content }}
+  </article>
+
+  {{- if $toc }}
+  <nav class="cut toc" aria-label="目錄">
+    <b>CONTENTS</b>
+    {{ .TableOfContents }}
+  </nav>
+  {{- end }}
+</div>
+
+<nav class="pager" aria-label="文章導覽">
+  {{- with .PrevInSection }}
+  <a class="cut" href="{{ .RelPermalink }}"><span class="k">PREV ◂</span><span class="t">{{ .Title }}</span></a>
+  {{- else }}
+  <span class="cut"><span class="k">PREV ◂</span><span class="t">END OF LOG</span></span>
+  {{- end }}
+  {{- with .NextInSection }}
+  <a class="cut nx" href="{{ .RelPermalink }}"><span class="k">NEXT ▸</span><span class="t">{{ .Title }}</span></a>
+  {{- else }}
+  <span class="cut nx"><span class="k">NEXT ▸</span><span class="t">END OF LOG</span></span>
+  {{- end }}
+</nav>
+{{ end }}
