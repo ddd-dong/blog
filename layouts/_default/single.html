@@ -15,10 +15,13 @@
 
 <div class="doc-head">
   <h1>{{ .Title }}</h1>
+  {{- $parts := slice }}
+  {{- if not .Date.IsZero }}{{ $parts = $parts | append (.Date.Format "2006-01-02") }}{{ end }}
+  {{- $rt := .ReadingTime }}{{ if lt $rt 1 }}{{ $rt = 1 }}{{ end }}
+  {{- if ne (.Param "ShowReadingTime") false }}{{ $parts = $parts | append (printf "%d MIN" $rt) }}{{ end }}
+  {{- $parts = $parts | append (printf "%d 字" .WordCount) }}
   <div class="meta">
-    {{- with .Date }}<span>{{ .Format "2006-01-02" }}</span>{{ end }}
-    {{- if ne (.Param "ShowReadingTime") false }}<i>/</i><span>{{ .ReadingTime }} MIN</span>{{ end }}
-    <i>/</i><span>{{ .WordCount }} 字</span>
+    {{- range $i, $p := $parts }}{{ if $i }}<i>/</i>{{ end }}<span>{{ $p }}</span>{{ end }}
   </div>
   {{- with .Params.tags }}
   <div class="tags">{{ range . }}<span>{{ . }}</span>{{ end }}</div>
@@ -40,6 +43,7 @@
   {{- end }}
 </div>
 
+{{- if .Section }}
 <nav class="pager" aria-label="文章導覽">
   {{- with .PrevInSection }}
   <a class="cut" href="{{ .RelPermalink }}"><span class="k">PREV ◂</span><span class="t">{{ .Title }}</span></a>
@@ -52,4 +56,5 @@
   <span class="cut nx"><span class="k">NEXT ▸</span><span class="t">END OF LOG</span></span>
   {{- end }}
 </nav>
+{{- end }}
 {{ end }}

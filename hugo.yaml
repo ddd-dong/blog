@@ -1,6 +1,7 @@
 baseURL: https://ddd-dong.github.io/blog/
 languageCode: en-us
 timeZone: Asia/Taipei
+hasCJKLanguage: true
 title: My New Hugo Site
 theme: ["PaperMod"]
 params:
