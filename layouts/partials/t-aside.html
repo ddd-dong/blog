@@ -5,5 +5,4 @@
   <a{{ if eq $ctx.active "WRITING" }} class="on" aria-current="page"{{ end }} href="{{ "posts/" | relURL }}"><i aria-hidden="true">≡</i>WRITING<small>blog / research</small></a>
   <a{{ if eq $ctx.active "TALKS" }} class="on" aria-current="page"{{ end }} href="{{ "talks/" | relURL }}"><i aria-hidden="true">◎</i>TALKS<small>conferences</small></a>
   <a{{ if eq $ctx.active "CONTACT" }} class="on" aria-current="page"{{ end }} href="{{ "about/" | relURL }}"><i aria-hidden="true">⌖</i>CONTACT<small>links</small></a>
-  <div class="foot">BUILD {{ now.Format "2006.01" }}<br>HUGO / TERMINAL</div>
 </aside>

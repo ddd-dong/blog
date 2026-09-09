@@ -96,7 +96,6 @@
   aside a i{font-style:normal;font-size:12px;color:var(--line-strong);grid-row:span 2}
   aside a.on,aside a:hover{color:var(--fg);background:linear-gradient(90deg,var(--bg2),transparent)}
   aside a.on::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
-  aside .foot{margin-top:auto;padding:0 24px;font-size:11px;color:var(--line-strong);letter-spacing:.1em;line-height:1.7}
 
   section.stage{position:relative;padding:40px 48px 64px;overflow:clip}
   .wm{
@@ -175,7 +174,7 @@
     /* auto rows would otherwise share main's min-height and stretch the chip bar */
     main{grid-template-columns:1fr;grid-template-rows:auto 1fr}
     aside{position:static;height:auto;align-items:center;flex-direction:row;flex-wrap:wrap;padding:12px;border-right:0;border-bottom:1px solid var(--line)}
-    aside .lbl,aside .foot{display:none}
+    aside .lbl{display:none}
     aside a{padding:8px 12px;font-size:16px;grid-template-columns:auto}
     aside a i,aside a small{display:none}
     section.stage{padding:28px 20px 48px}
