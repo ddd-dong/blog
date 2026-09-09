@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="page-head">
+  <h1>{{ .Title | upper }}</h1>
+</div>
+
+<div class="meta">
+  <span>{{ len .Pages }} {{ if eq (len .Pages) 1 }}TERM{{ else }}TERMS{{ end }}</span>
+  <i>/</i>
+  <span>SORTED BY NAME</span>
+</div>
+
+{{- with .Content }}<div class="prose" style="margin-top:18px">{{ . }}</div>{{ end }}
+
+<div class="hazard" style="margin-top:22px" aria-hidden="true"></div>
+
+{{- if .Pages }}
+<div class="termlist tags">
+  {{- range .Pages.ByTitle }}
+  <a href="{{ .RelPermalink }}"><span>{{ .Title }}<em>({{ len .Pages }})</em></span></a>
+  {{- end }}
+</div>
+{{- else }}
+<div class="cut empty">
+  <b>NO ENTRIES</b>
+  <span>目前還沒有任何標籤。文章加上 tags 之後就會列在這裡。</span>
+</div>
+{{- end }}
+{{ end }}
