@@ -2,20 +2,8 @@
        which watermark to stamp on the stage. See TERMINAL_THEME_SPEC.md §3. */ -}}
 {{- $active := "" -}}
 {{- $wm := "" -}}
-{{- $research := false -}}
-{{- if eq .Kind "term" -}}
-  {{- if and (eq .Type "tags") (eq (lower .Data.Term) "research") -}}
-    {{- $research = true -}}
-  {{- end -}}
-{{- else if eq .Kind "page" -}}
-  {{- range .Params.tags -}}
-    {{- if eq (lower .) "research" -}}{{- $research = true -}}{{- end -}}
-  {{- end -}}
-{{- end -}}
 {{- if .IsHome -}}
   {{- $active = "HOME" -}}{{- $wm = "DDD" -}}
-{{- else if $research -}}
-  {{- $active = "RESEARCH" -}}{{- $wm = "RES" -}}
 {{- else if eq .Section "talks" -}}
   {{- $active = "TALKS" -}}{{- $wm = "TLK" -}}
 {{- else if eq .Section "posts" -}}
