@@ -1,0 +1,10 @@
+{{- $ctx := partial "t-ctx.html" . -}}
+<aside>
+  <div class="lbl">MODULES</div>
+  <a{{ if eq $ctx.active "HOME" }} class="on" aria-current="page"{{ end }} href="{{ "/" | relURL }}"><i aria-hidden="true">▣</i>HOME<small>overview</small></a>
+  <a{{ if eq $ctx.active "RESEARCH" }} class="on" aria-current="page"{{ end }} href="{{ "tags/research/" | relURL }}"><i aria-hidden="true">◈</i>RESEARCH<small>llm / kernel</small></a>
+  <a{{ if eq $ctx.active "WRITING" }} class="on" aria-current="page"{{ end }} href="{{ "posts/" | relURL }}"><i aria-hidden="true">≡</i>WRITING<small>blog</small></a>
+  <a{{ if eq $ctx.active "TALKS" }} class="on" aria-current="page"{{ end }} href="{{ "talks/" | relURL }}"><i aria-hidden="true">◎</i>TALKS<small>conferences</small></a>
+  <a{{ if eq $ctx.active "CONTACT" }} class="on" aria-current="page"{{ end }} href="{{ "about/" | relURL }}"><i aria-hidden="true">⌖</i>CONTACT<small>links</small></a>
+  <div class="foot">BUILD {{ now.Format "2006.01" }}<br>HUGO / TERMINAL</div>
+</aside>

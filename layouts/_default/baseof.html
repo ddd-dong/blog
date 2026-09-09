@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="dark">
+<head>
+{{- partial "t-head.html" . }}
+</head>
+<body>
+
+{{ block "boot" . }}{{ end }}
+
+{{ partial "t-header.html" . }}
+
+<main>
+  {{ partial "t-aside.html" . }}
+
+  <section class="stage">
+    {{ block "wm" . }}{{ with (partial "t-ctx.html" .).wm }}<div class="wm" aria-hidden="true">{{ . }}</div>{{ end }}{{ end }}
+    {{ block "main" . }}{{ end }}
+  </section>
+</main>
+
+{{ partial "t-footer.html" . }}
+
+<script>
+  (function () {
+    var clk = document.getElementById('clk');
+    if (clk) {
+      var tick = function () {
+        clk.textContent = new Date().toLocaleTimeString('en-GB', { timeZone: 'Asia/Taipei' });
+      };
+      tick();
+      setInterval(tick, 1000);
+    }
+    var root = document.documentElement, tgl = document.getElementById('tgl');
+    var apply = function (t) { root.dataset.theme = t; if (tgl) tgl.textContent = t === 'light' ? 'DARK' : 'LIGHT'; };
+    if (tgl) {
+      tgl.addEventListener('click', function () {
+        var t = root.dataset.theme === 'light' ? 'dark' : 'light';
+        apply(t);
+        localStorage.setItem('pref-theme', t);
+      });
+    }
+    apply(localStorage.getItem('pref-theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+  })();
+</script>
+</body>
+</html>

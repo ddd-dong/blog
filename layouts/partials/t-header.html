@@ -1,0 +1,12 @@
+{{- $ctx := partial "t-ctx.html" . -}}
+<header>
+  <a class="brand" href="{{ "/" | relURL }}"><span class="sq" aria-hidden="true"></span>DDD / TERMINAL</a>
+  <nav aria-label="主導覽">
+    <a href="{{ "tags/research/" | relURL }}"{{ if eq $ctx.active "RESEARCH" }} aria-current="page"{{ end }}>RESEARCH</a>
+    <a href="{{ "posts/" | relURL }}"{{ if eq $ctx.active "WRITING" }} aria-current="page"{{ end }}>WRITING</a>
+    <a href="{{ "talks/" | relURL }}"{{ if eq $ctx.active "TALKS" }} aria-current="page"{{ end }}>TALKS</a>
+    <a href="{{ "about/" | relURL }}"{{ if eq $ctx.active "CONTACT" }} aria-current="page"{{ end }}>CONTACT</a>
+  </nav>
+  <div class="clock">HSINCHU, TW<b id="clk">--:--:--</b></div>
+  <button class="tgl" id="tgl" type="button" aria-label="切換亮暗主題">LIGHT</button>
+</header>

@@ -1,0 +1,28 @@
+{{- /* Page context for the terminal chrome: which aside module is active and
+       which watermark to stamp on the stage. See TERMINAL_THEME_SPEC.md §3. */ -}}
+{{- $active := "" -}}
+{{- $wm := "" -}}
+{{- $research := false -}}
+{{- if eq .Kind "term" -}}
+  {{- if and (eq .Type "tags") (eq (lower .Data.Term) "research") -}}
+    {{- $research = true -}}
+  {{- end -}}
+{{- else if eq .Kind "page" -}}
+  {{- range .Params.tags -}}
+    {{- if eq (lower .) "research" -}}{{- $research = true -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if .IsHome -}}
+  {{- $active = "HOME" -}}{{- $wm = "DDD" -}}
+{{- else if $research -}}
+  {{- $active = "RESEARCH" -}}{{- $wm = "RES" -}}
+{{- else if eq .Section "talks" -}}
+  {{- $active = "TALKS" -}}{{- $wm = "TLK" -}}
+{{- else if eq .Section "posts" -}}
+  {{- $active = "WRITING" -}}{{- $wm = "LOG" -}}
+{{- else if hasSuffix .RelPermalink "/about/" -}}
+  {{- $active = "CONTACT" -}}{{- $wm = "ID" -}}
+{{- else if in (slice "term" "taxonomy") .Kind -}}
+  {{- $active = "WRITING" -}}{{- $wm = "TAG" -}}
+{{- end -}}
+{{- return dict "active" $active "wm" $wm -}}

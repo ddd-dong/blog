@@ -1,0 +1,70 @@
+{{ define "boot" }}
+<div id="boot" aria-hidden="true">
+  <div>
+    <div>SYSTEM CHECK</div>
+    <div class="line"><i></i></div>
+  </div>
+</div>
+{{ end }}
+
+{{ define "main" }}
+<div class="hero">
+  <div>
+    <div class="id">ID / DDD-DONG · NYCU CS · SECURITY</div>
+    <h1>Yu Ting<br>Lin
+      <span>LLM 安全、Linux 核心漏洞研究，偶爾寫點東西。</span>
+    </h1>
+    <div class="tags">
+      <span>AI SECURITY</span><span>AGENT SUPPLY CHAIN</span><span>KERNEL / io_uring</span><span>BINARY EXPLOITATION</span>
+    </div>
+  </div>
+
+  <div class="cut status">
+    <h2>STATUS <em>ONLINE</em></h2>
+    <div class="row"><b>Skill supply-chain attacks</b><span>paper</span><div class="bar"><i style="--w:80%"></i></div></div>
+    <div class="row"><b>Guardrail false-positive DoS</b><span>corpus</span><div class="bar"><i style="--w:45%"></i></div></div>
+    <div class="row"><b>io_uring / SLUB sheaf</b><span>talk</span><div class="bar"><i style="--w:65%"></i></div></div>
+    <div class="row"><b>Kernel vuln pipeline</b><span>running</span><div class="bar"><i style="--w:30%"></i></div></div>
+  </div>
+</div>
+
+<div class="hazard" style="margin-bottom:16px" aria-hidden="true"></div>
+
+<div class="grid">
+  <a class="cut card" id="research" href="{{ "tags/research/" | relURL }}">
+    <div class="k"><span>RESEARCH</span><span>01</span></div>
+    <h3>LLM Agent Security</h3>
+    <p>Coding agent 的 skill 生態、權限投毒、guardrail 誤判造成的拒絕服務。</p>
+    <div class="go">OPEN ▸</div>
+  </a>
+  <a class="cut card" href="{{ "tags/kernel/" | relURL }}">
+    <div class="k"><span>RESEARCH</span><span>02</span></div>
+    <h3>Kernel Exploitation</h3>
+    <p>io_uring 0-day、SLUB sheaf 利用技巧，以及用 agent 自動找 mm/ 下的漏洞。</p>
+    <div class="go">OPEN ▸</div>
+  </a>
+  <a class="cut card" id="talks" href="{{ "talks/" | relURL }}">
+    <div class="k"><span>TALKS</span><span>03</span></div>
+    <h3>Conferences</h3>
+    <p>投稿與演講紀錄，包含資安會議與 NLP workshop。</p>
+    <div class="go">OPEN ▸</div>
+  </a>
+
+  <div class="cut card wide" id="writing">
+    <div class="k"><span>LATEST WRITING</span><span>LOG</span></div>
+    <div class="log">
+      {{ range first 5 (where site.RegularPages "Type" "posts") }}
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><a href="{{ .RelPermalink }}"><b>{{ .Title }}</b></a>
+      {{ end }}
+    </div>
+    <a class="go" href="{{ "posts/" | relURL }}">ALL POSTS ▸</a>
+  </div>
+
+  <a class="cut card" id="contact" href="{{ "about/" | relURL }}">
+    <div class="k"><span>CONTACT</span><span>LINK</span></div>
+    <h3>Reach me</h3>
+    <p>GitHub · ddd-dong<br>X · @ddd-dong<br>Mail · hi@ddd.example</p>
+    <div class="go">OPEN ▸</div>
+  </a>
+</div>
+{{ end }}
