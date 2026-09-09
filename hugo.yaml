@@ -8,7 +8,7 @@ markup:
     noClasses: false
     codeFences: true
     lineNumbersInTable: false
-title: My New Hugo Site
+title: "ddd's blog"
 theme: ["PaperMod"]
 params:
   ShowReadingTime: true
