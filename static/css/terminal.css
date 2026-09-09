@@ -159,6 +159,7 @@
   #boot .line i{display:block;height:100%;background:var(--fg);animation:load 1.4s cubic-bezier(.7,0,.3,1) forwards}
   @keyframes load{from{width:0}to{width:100%}}
   @keyframes bootout{to{opacity:0;visibility:hidden}}
+  [data-booted="1"] #boot{display:none}
   @media (prefers-reduced-motion:reduce){#boot{display:none}}
 
   /* ---------- responsive ---------- */

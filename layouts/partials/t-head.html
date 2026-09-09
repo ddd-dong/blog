@@ -5,6 +5,8 @@
   document.documentElement.dataset.theme =
     localStorage.getItem('pref-theme') ||
     (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  /* the boot bar runs once per browsing session, not on every visit */
+  try { if (sessionStorage.getItem('booted')) document.documentElement.dataset.booted = '1'; } catch (e) {}
 </script>
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} / {{ site.Title }}{{ end }}</title>
 {{- with or .Description site.Params.description }}
