@@ -1,0 +1,60 @@
+{{ define "main" }}
+{{- $pages := .Pages.ByDate.Reverse -}}
+{{- $paginator := .Paginate $pages -}}
+
+<div class="page-head">
+  <h1>{{ .Title }}</h1>
+</div>
+
+<div class="meta">
+  <span>{{ len $pages }} {{ if eq (len $pages) 1 }}ENTRY{{ else }}ENTRIES{{ end }}</span>
+  <i>/</i>
+  <span>SORTED BY DATE</span>
+</div>
+
+{{- with .Content }}<div class="prose" style="margin-top:18px">{{ . }}</div>{{ end }}
+
+<div class="hazard" style="margin-top:22px" aria-hidden="true"></div>
+
+{{- if $paginator.Pages }}
+<ol class="post-list">
+  {{- range $paginator.Pages }}
+  <li>
+    <a class="row" href="{{ .RelPermalink }}">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <span class="t">{{ .Title }}</span>
+      {{- with .Params.tags }}
+      <span class="tags">{{ range first 3 . }}<span>{{ . }}</span>{{ end }}</span>
+      {{- else }}
+      <span></span>
+      {{- end }}
+      {{- $sum := or .Description (.Summary | plainify | chomp) }}
+      {{- with $sum }}<span class="sum">{{ . | truncate 180 }}</span>{{ end }}
+    </a>
+  </li>
+  {{- end }}
+</ol>
+
+{{- if gt $paginator.TotalPages 1 }}
+<nav class="pager" aria-label="分頁">
+  {{- with $paginator.Prev }}
+  <a class="cut" href="{{ .URL }}"><span class="k">PREV ◂</span><span class="t">PAGE {{ printf "%02d" .PageNumber }}</span></a>
+  {{- else }}
+  <span class="cut"><span class="k">PREV ◂</span><span class="t">START OF LIST</span></span>
+  {{- end }}
+  {{- with $paginator.Next }}
+  <a class="cut nx" href="{{ .URL }}"><span class="k">NEXT ▸</span><span class="t">PAGE {{ printf "%02d" .PageNumber }}</span></a>
+  {{- else }}
+  <span class="cut nx"><span class="k">NEXT ▸</span><span class="t">END OF LIST</span></span>
+  {{- end }}
+  <span class="mid">PAGE {{ printf "%02d" $paginator.PageNumber }} / {{ printf "%02d" $paginator.TotalPages }}</span>
+</nav>
+{{- end }}
+
+{{- else }}
+<div class="cut empty">
+  <b>NO ENTRIES</b>
+  <span>這個區塊還沒有文章。之後寫的東西會出現在這裡。</span>
+</div>
+{{- end }}
+{{ end }}
