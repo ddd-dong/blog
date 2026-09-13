@@ -1,6 +1,12 @@
 # 首頁 RECENT PUBLICATIONS 面板。新的放最上面，只會顯示前 4 筆。
 - title: "PhantomSkill: Malicious Code Injection in Agent Skill Ecosystems"
-  authors: "Lin, Yu"
+  authors: "Yu-Ting Lin, Chia-Mu Yu"
   venue: "arXiv:2606.19191"
   date: "2026-06"
   url: "https://arxiv.org/abs/2606.19191"
+
+- title: "Characterised LLMs Affect its Evaluation of Summary and Translation"
+  authors: "Yu-An Lu, Yu-Ting Lin"
+  venue: "Eval4NLP 2023"
+  date: "2023-11"
+  url: "https://aclanthology.org/2023.eval4nlp-1.15/"

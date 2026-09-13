@@ -1,7 +1,7 @@
 {{ define "boot" }}
 <div id="boot" aria-hidden="true">
   <div>
-    <div>SYSTEM CHECK</div>
+    <div>LINK STARTING!</div>
     <div class="line"><i></i></div>
   </div>
 </div>
@@ -11,12 +11,12 @@
 {{ define "main" }}
 <div class="hero">
   <div>
-    <div class="id">ID / DDD-DONG · NYCU CS · SECURITY</div>
+    <div class="id">DDD-DONG · NYCU CS</div>
     <h1>Yu Ting<br>Lin
-      <span>LLM 與 agent 安全研究，偶爾寫點東西。</span>
+      <span>Researching in the field of NLP and AI Safety, sometimes post about it.</span>
     </h1>
     <div class="tags">
-      <span>AI SECURITY</span><span>AGENT SUPPLY CHAIN</span><span>BINARY EXPLOITATION</span>
+      <span>NLP</span><span>AI Safety</span><span>BINARY EXPLOITATION</span>
     </div>
   </div>
 
@@ -35,27 +35,31 @@
 
 <div class="grid">
   <a class="cut card" id="research" href="{{ "posts/" | relURL }}">
-    <div class="k"><span>RESEARCH</span><span>01</span></div>
-    <h3>LLM Agent Security</h3>
-    <p>Coding agent 的 skill 生態、權限投毒、guardrail 誤判造成的拒絕服務。</p>
+    <div class="k"><span>RESEARCH</span><span>UNSOLVED</span></div>
+    <h3>AI Safety</h3>
+    <p>Jailbreaking, Prompt Injection, Adversarial Attacks...</p>
     <div class="go">OPEN ▸</div>
   </a>
   <a class="cut card" id="talks" href="{{ "talks/" | relURL }}">
-    <div class="k"><span>TALKS</span><span>02</span></div>
+    <div class="k"><span>TALKS</span><span>RATE LIMITED</span></div>
     <h3>Conferences</h3>
-    <p>投稿與演講紀錄，包含資安會議與 NLP workshop。</p>
+    <p>Talks and presentations at various conferences and workshops.</p>
     <div class="go">OPEN ▸</div>
   </a>
 
-  <a class="cut card" id="contact" href="{{ "about/" | relURL }}">
-    <div class="k"><span>CONTACT</span><span>LINK</span></div>
+  <div class="cut card" id="contact">
+    <div class="k"><span>CONTACT</span><span>200 OK</span></div>
     <h3>Reach me</h3>
-    <p>GitHub · ddd-dong<br>X · @ddd-dong<br>Mail · hi@ddd.example</p>
-    <div class="go">OPEN ▸</div>
-  </a>
+    <p class="links">
+      <a href="https://github.com/ddd-dong" rel="me noopener">GitHub · ddd-dong</a><br>
+      <a href="https://x.com/ddd-dong" rel="me noopener">X · @ddd-dong</a><br>
+      <a href="mailto:dong1214.mailbox@gmail.com">Mail · dong1214.mailbox@gmail.com</a>
+    </p>
+    <button class="go" type="button" id="copymail" data-mail="dong1214.mailbox@gmail.com">COPY MAIL ▸</button>
+  </div>
 
   <div class="cut card full" id="writing">
-    <div class="k"><span>LATEST WRITING</span><span>LOG</span></div>
+    <div class="k"><span>LATEST WRITING</span><span>TAIL -F</span></div>
     <div class="log">
       {{ range first 5 (where site.RegularPages "Type" "posts") }}
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time><a href="{{ .RelPermalink }}"><b>{{ .Title }}</b></a>
@@ -65,4 +69,17 @@
   </div>
 
 </div>
+
+<script>
+  (function () {
+    var b = document.getElementById('copymail');
+    if (!b || !navigator.clipboard) return;
+    b.addEventListener('click', function () {
+      navigator.clipboard.writeText(b.dataset.mail).then(function () {
+        b.textContent = 'COPIED ✓';
+        setTimeout(function () { b.textContent = 'COPY MAIL ▸'; }, 1600);
+      });
+    });
+  })();
+</script>
 {{ end }}
