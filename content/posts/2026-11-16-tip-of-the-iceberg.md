@@ -6,7 +6,7 @@ description: Task-in-Prompt 攻擊：將敏感字編碼後要求模型解題，�
 
 > **The TIP of the Iceberg: Revealing a Hidden Class of Task-in-Prompt Adversarial Attacks on LLMs**
 
-> Sergey Berezin, Reza Farahbakhsh, Noel Crespi ・ ACL 2025 ・ [arXiv 2501.18626\](https://arxiv.org/abs/2501.18626)
+> Sergey Berezin, Reza Farahbakhsh, Noel Crespi ・ ACL 2025 ・ [arXiv 2501.18626](https://arxiv.org/abs/2501.18626)
 
 > 一句話：將敏感字編碼成謎題，讓模型在解題時繞過安全限制
 
